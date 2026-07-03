@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jinpeng Meng's personal academic homepage.">
+    <title>Jinpeng Meng - Personal Homepage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --accent-color: #f59e0b;
+            --text-color: #334155;
+            --heading-color: #0f172a;
+            --bg-color: #ffffff;
+            --panel-bg: #f8fafc;
+            --gray-light: #e2e8f0;
+            --gray-text: #64748b;
+            --shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background:
+                linear-gradient(180deg, #f8fafc 0, #ffffff 220px);
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: flex;
+            gap: 4rem;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .sidebar {
+            flex: 0 0 280px;
+            text-align: center;
+            align-self: flex-start;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .profile-photo {
+            width: 184px;
+            height: 184px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.4rem;
+            border: 4px solid #ffffff;
+            box-shadow: var(--shadow);
+        }
+
+        .sidebar h1 {
+            font-size: 1.8rem;
+            line-height: 1.2;
+            color: var(--heading-color);
+            margin: 0 0 0.5rem 0;
+        }
+
+        .sidebar p {
+            color: var(--gray-text);
+            margin: 0 0 0.35rem 0;
+            font-size: 0.96rem;
+        }
+
+        .affiliation {
+            margin-top: 0.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1.4rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-text);
+            background: #ffffff;
+            border: 1px solid var(--gray-light);
+            border-radius: 50%;
+            font-size: 1.08rem;
+            text-decoration: none;
+            transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            border-color: rgba(37, 99, 235, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        section {
+            margin-bottom: 2.9rem;
+        }
+
+        h2 {
+            font-size: 1.45rem;
+            line-height: 1.25;
+            color: var(--heading-color);
+            border-bottom: 2px solid var(--gray-light);
+            padding-bottom: 0.55rem;
+            margin: 0 0 1.35rem 0;
+        }
+
+        p {
+            margin: 0 0 1.15rem 0;
+            text-align: justify;
+        }
+
+        .research-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            margin-top: 1rem;
+        }
+
+        .research-tags span {
+            display: inline-flex;
+            align-items: center;
+            min-height: 32px;
+            padding: 0.28rem 0.72rem;
+            border-radius: 999px;
+            background: #eff6ff;
+            color: #1d4ed8;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .news-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-left: 2px solid var(--gray-light);
+        }
+
+        .news-list li {
+            position: relative;
+            margin-bottom: 0.9rem;
+            padding-left: 1.25rem;
+            display: flex;
+            gap: 1rem;
+            font-size: 0.96rem;
+        }
+
+        .news-list li::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 0.55rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            box-shadow: 0 0 0 4px #eff6ff;
+        }
+
+        .news-date {
+            flex: 0 0 76px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .pub-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 1.3rem;
+        }
+
+        .pub-item {
+            display: grid;
+            grid-template-columns: minmax(260px, 38%) 1fr;
+            gap: 1.35rem;
+            align-items: stretch;
+            padding: 1rem;
+            background: #ffffff;
+            border: 1px solid var(--gray-light);
+            border-radius: 8px;
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+        }
+
+        .pub-figure {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 190px;
+            background: var(--panel-bg);
+            border: 1px solid #edf2f7;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .pub-figure img {
+            width: 100%;
+            height: 100%;
+            max-height: 230px;
+            object-fit: contain;
+            padding: 0.55rem;
+            background: #ffffff;
+        }
+
+        .pub-badge {
+            position: absolute;
+            left: 0.7rem;
+            top: 0.7rem;
+            padding: 0.22rem 0.55rem;
+            border-radius: 4px;
+            background: var(--primary-color);
+            color: #ffffff;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+
+        .pub-content {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            padding: 0.15rem 0.15rem 0.15rem 0;
+        }
+
+        .pub-title {
+            color: var(--heading-color);
+            font-size: 1.18rem;
+            line-height: 1.35;
+            font-weight: 750;
+            margin-bottom: 0.45rem;
+        }
+
+        .pub-authors {
+            color: var(--text-color);
+            font-size: 0.98rem;
+            margin-bottom: 0.28rem;
+        }
+
+        .me {
+            font-weight: 800;
+            color: var(--heading-color);
+            text-decoration: underline;
+            text-decoration-color: rgba(245, 158, 11, 0.75);
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+        }
+
+        .pub-venue {
+            color: var(--gray-text);
+            font-size: 0.95rem;
+            font-weight: 650;
+            margin-bottom: 0.65rem;
+        }
+
+        .pub-summary {
+            margin: 0 0 0.95rem 0;
+            color: #475569;
+            font-size: 0.96rem;
+            line-height: 1.62;
+            text-align: left;
+        }
+
+        .pub-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            margin-top: auto;
+        }
+
+        .pub-links a,
+        .pub-links button {
+            min-height: 36px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.9rem;
+            font-family: inherit;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            border: 1px solid rgba(37, 99, 235, 0.35);
+            background: #ffffff;
+            padding: 0.36rem 0.72rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .pub-links a:hover,
+        .pub-links button:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 860px) {
+            body {
+                flex-direction: column;
+                gap: 2rem;
+                padding: 1.5rem;
+            }
+
+            .sidebar {
+                position: static;
+                flex: none;
+                width: 100%;
+            }
+
+            .pub-item {
+                grid-template-columns: 1fr;
+            }
+
+            .pub-figure {
+                min-height: 180px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            body {
+                padding: 1.1rem;
+            }
+
+            .profile-photo {
+                width: 156px;
+                height: 156px;
+            }
+
+            .news-list li {
+                display: block;
+            }
+
+            .news-date {
+                display: block;
+                margin-bottom: 0.1rem;
+            }
+
+            .pub-item {
+                padding: 0.8rem;
+            }
+
+            .pub-title {
+                font-size: 1.08rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <img class="profile-photo" src="me.jpg" alt="Jinpeng Meng profile photo">
+        <h1>Jinpeng Meng</h1>
+        <p>Bachelor's Graduate</p>
+        <div class="affiliation">
+            <p>College of Light Industry Science and Engineering</p>
+            <p>Tianjin University of Science and Technology</p>
+        </div>
+
+        <div class="social-links" aria-label="Social links">
+            <a href="mailto:22062212@mail.tust.edu.cn" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://scholar.google.com.hk/citations?user=osYTTl8AAAAJ&hl=zh-CN" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://github.com/2177262052" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://orcid.org/0009-0002-1204-1547" target="_blank" rel="noopener noreferrer" title="ORCID" aria-label="ORCID"><i class="fab fa-orcid"></i></a>
+        </div>
+    </aside>
+
+    <main class="content">
+        <section>
+            <h2>About Me</h2>
+            <p>
+                Hello! My name is Jinpeng Meng. I received my bachelor's degree from Tianjin University of Science and Technology. My research interests include medical image analysis, deep learning, and AI for sensors. I am interested in building intelligent systems that connect perception, sensing, and real-world medical applications.
+            </p>
+            <p>
+                I am always open to research discussions and collaboration. Please feel free to contact me by email.
+            </p>
+            <div class="research-tags" aria-label="Research interests">
+                <span>Deep Learning</span>
+                <span>Wearable Device</span>
+                <span>AI for Sensors</span>
+                <span>Medical Image</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>News</h2>
+            <ul class="news-list">
+                <li>
+                    <span class="news-date">2026.06</span>
+                    <span>Completed my graduation project and received my bachelor's degree.</span>
+                </li>
+                <li>
+                    <span class="news-date">2025.04</span>
+                    <span>Our paper, MUF-Net, was accepted by <em>Sensors</em>.</span>
+                </li>
+                <li>
+                    <span class="news-date">2024.04</span>
+                    <span>Our paper on echocardiography segmentation was accepted by ICIC 2024.</span>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Publications / Projects</h2>
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <div class="pub-figure">
+                        <span class="pub-badge">Pre-submission</span>
+                        <img src="images/pub-watch-stress-framework.png" alt="Watch-only stress recognition framework overview">
+                    </div>
+                    <article class="pub-content">
+                        <div class="pub-title">Motion-Aware Watch-Only Stress Recognition with Privileged Physiological Supervision</div>
+                        <div class="pub-authors"><span class="me">Jinpeng Meng</span></div>
+                        <div class="pub-venue">Pre-submission, 2026</div>
+                        <p class="pub-summary">A watch-only stress recognition framework that uses PPG/BVP and wrist accelerometry for deployable inference, while studying whether privileged physiological supervision can improve training-time guidance.</p>
+                        <div class="pub-links">
+                            <a href="https://github.com/2177262052" target="_blank" rel="noopener noreferrer"><i class="fas fa-code"></i> Code</a>
+                            <button type="button" onclick="alert('DOI coming soon.')"><i class="fas fa-link"></i> DOI</button>
+                        </div>
+                    </article>
+                </li>
+
+                <li class="pub-item">
+                    <div class="pub-figure">
+                        <span class="pub-badge">Outstanding Thesis - Municipal Nominee</span>
+                        <img src="images/pub-bachelor-thesis-cellulose.png" alt="Cellulose film bachelor thesis project overview">
+                    </div>
+                    <article class="pub-content">
+                        <div class="pub-title">Ultrafast Preparation of Cellulose Films and Their Applications in Flexible Electronics</div>
+                        <div class="pub-authors"><span class="me">Jinpeng Meng</span></div>
+                        <div class="pub-venue">Bachelor's Thesis Project, 2026 - University-level Outstanding Bachelor Thesis, nominated for Tianjin-level selection</div>
+                        <p class="pub-summary">A bachelor thesis project on ultrafast cellulose-film preparation and flexible bioelectronic electrodes for ECG and EMG physiological signal monitoring.</p>
+                        <div class="pub-links">
+                            <button type="button" onclick="alert('coming soon....')"><i class="fas fa-image"></i> Poster</button>
+                        </div>
+                    </article>
+                </li>
+
+                <li class="pub-item">
+                    <div class="pub-figure">
+                        <span class="pub-badge">Sensors 2025</span>
+                        <img src="images/pub-mufnet-framework.png" alt="MUF-Net framework overview">
+                    </div>
+                    <article class="pub-content">
+                        <div class="pub-title">MUF-Net: A Novel Self-Attention-Based Dual-Task Learning Approach for Automatic Left Ventricle Segmentation in Echocardiography</div>
+                        <div class="pub-authors">Jing Lyu, <span class="me">Jinpeng Meng</span>, Yuanshuai Zhang*, Shu-Hung Ling</div>
+                        <div class="pub-venue"><em>Sensors</em>, 2025, 25(9): 2704</div>
+                        <p class="pub-summary">A dual-task echocardiography framework that combines left ventricle segmentation with optical-flow learning to improve contour consistency and robustness.</p>
+                        <div class="pub-links">
+                            <button type="button" onclick="alert('Sorry, the code for this paper has not been open-sourced. If you really need it, I will do my best to request access from the corresponding author.')"><i class="fas fa-code"></i> Code</button>
+                            <a href="https://doi.org/10.3390/s25092704" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i> DOI</a>
+                        </div>
+                    </article>
+                </li>
+
+                <li class="pub-item">
+                    <div class="pub-figure">
+                        <span class="pub-badge">ICIC 2024</span>
+                        <img src="images/pub-echo-results.png" alt="Echocardiography segmentation visual results">
+                    </div>
+                    <article class="pub-content">
+                        <div class="pub-title">Joint Semantic Feature and Optical Flow Learning for Automatic Echocardiography Segmentation</div>
+                        <div class="pub-authors">Jing Lyu, <span class="me">Jinpeng Meng</span>, Yuanshuai Zhang*, Shu-Hung Ling, Ling Sun</div>
+                        <div class="pub-venue">International Conference on Intelligent Computing (ICIC), 2024</div>
+                        <p class="pub-summary">A conference study exploring joint semantic feature and optical-flow learning for more stable automatic echocardiography segmentation.</p>
+                        <div class="pub-links">
+                            <button type="button" onclick="alert('Sorry, the code for this paper has not been open-sourced. If you really need it, I will do my best to request access from the corresponding author.')"><i class="fas fa-code"></i> Code</button>
+                            <a href="https://doi.org/10.1007/978-981-97-5600-1_14" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i> DOI</a>
+                        </div>
+                    </article>
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
